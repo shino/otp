@@ -1077,7 +1077,8 @@ spec_dir(Dir) ->
                     %% Directory
                     {create_dir,
 		     Base,
-		     [spec_dir(filename:join([Dir, F])) || F <- Files]};
+		     [spec_dir(filename:join([Dir, F])) || F <- Files,
+                                                           F =/= []]};
                 error ->
                     reltool_utils:throw_error("list dir ~s failed", [Dir])
             end;
